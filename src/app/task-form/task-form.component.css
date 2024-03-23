@@ -1,0 +1,54 @@
+/* Styles for the form container */
+form {
+    max-width: 400px; /* Adjust as needed */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styles for form labels */
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Styles for form input fields */
+  form input[type="text"],
+  form input[type="date"],
+  form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+  }
+  
+  /* Styles for form select elements */
+  form select {
+    appearance: none; /* Remove default select arrow */
+    background-color: #fff; /* Set background color */
+  }
+  
+  /* Styles for form button */
+  form button {
+    background-color: #007bff; /* Set button background color */
+    color: #fff; /* Set button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Styles for form button on hover */
+  form button:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+  }
+  
+  /* Styles for form button on focus */
+  form button:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add focus border */
+  }
+  

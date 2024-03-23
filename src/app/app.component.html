@@ -1,4 +1,4 @@
-<h1>welcome to my angular application</h1>
+<!-- <h1>welcome to my angular application</h1>
 
 <h1>check the string interpolation</h1>
 
@@ -6,10 +6,19 @@
 <h1>{{getTitle()}}</h1>
 <h1>{{isShow ? "correct": ""}}</h1>
 
-<h1 [hidden]="isShowEnteredInput">{{enteredInput}}</h1>
+<h1 [hidden]="isShowEnteredInput">{{enteredInput}}</h1> -->
 
-<formgroup></formgroup>
-<div>
+<app-header></app-header>
+<!-- <app-filter></app-filter> -->
+<router-outlet></router-outlet>
+<!-- <app-task-list></app-task-list> -->
+<button mat-raised-button color="primary" class="create-task-button" (click)="navigateToCreateTask()">
+  <span class="icon"><i class="fa fa-pencil"></i></span> Create Task
+</button>
+
+  <!-- <mat-icon>add</mat-icon> -->
+
+<!-- <div>
   <label for="password">password: </label>
   <input type="text" id="password" (input) = "userInput($event)">
 </div>
@@ -17,4 +26,4 @@
 <div>
   <button (click)="clicked()">submit</button>
   <input type="text" [(ngModel)] = "userName">
-</div>
+</div> -->

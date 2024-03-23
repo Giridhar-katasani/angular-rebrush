@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Task } from 'src/model/models';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,7 @@ export class AppComponent {
   enteredInput: string = "";
   userName: string = "Giridhar";
 
-  constructor() { };
+  constructor(private router: Router) { };
 
   ngOnInit() {
   }
@@ -24,6 +26,10 @@ export class AppComponent {
   public clicked(): void {
     console.log("clicked");
     this.isShowEnteredInput=false;
+  }
+
+  navigateToCreateTask() {
+    this.router.navigate(['/task-form']); // Navigate to the create-task route
   }
 
   public userInput(event:any): void {

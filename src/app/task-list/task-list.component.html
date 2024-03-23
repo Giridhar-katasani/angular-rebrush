@@ -1,0 +1,21 @@
+<div class="flex-container">
+  <div class="task-filters">
+    <app-filter (filterChange)="onFilterChange($event)"></app-filter>
+  </div>
+</div>
+
+<!-- <app-task-form></app-task-form> -->
+
+<div *ngFor="let task of filteredTasks">
+    <div class="task">
+      <h3 class="task">{{task.title}}</h3>
+      <p class="task-description">{{task.description}}</p>
+      <div class="task-details">
+        <div class="task-detail">Due Date: <span class="due-date">{{task.dueDate}}</span></div>
+        <div class="task-detail">Priority: <span class="priority-low">{{task.priority}}</span></div>
+        <div class="task-detail">Category: <span class="category">{{task.category}}</span></div>
+        <div class="task-detail">Status: <span class="status-completed">{{task.status}}</span></div>
+      </div>
+    </div>
+</div>
+  
