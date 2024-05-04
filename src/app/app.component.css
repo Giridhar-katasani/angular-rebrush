@@ -3,4 +3,9 @@
     bottom: 5%; /* Adjust as needed */
     right: 5%; /* Adjust as needed */
   }
+
+.color-button {
+  background-color: teal;
+  color: white;
+}
   

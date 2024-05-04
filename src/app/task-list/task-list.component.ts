@@ -67,7 +67,8 @@ export class TaskListComponent implements OnInit {
 
     if(this.searchQuery) {
       filteredTasks = filteredTasks.filter((task: Task) => {
-        return task.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || task.description.toLowerCase().includes(this.searchQuery.toLowerCase());
+        return (task.title ? task.title.toLowerCase().includes(this.searchQuery.toLowerCase()) : false) || 
+         (task.description ? task.description.toLowerCase().includes(this.searchQuery.toLowerCase()) : false);
       });
     }
     // Update filteredTasks with the filtered result

@@ -1,10 +1,15 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Task } from "src/model/models";
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class TaskService {
+
+    constructor(private http: HttpClient) {
+
+    }
+
+    private API_URL = 'http://localhost:9090/task/save';
 
     taskList: Task[] = [
       {
@@ -144,9 +149,18 @@ export class TaskService {
       }
     ];
 
-      constructor() { }
-
       public getTask() {
         return this.taskList;
+      }
+
+      public createTask(task: Task) {
+        const token = localStorage.getItem('jwtToken'); // Retrieve the token
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`
+        });
+        console.log(token);
+        return this.http.post(this.API_URL, task, { headers }).subscribe((response) => {
+          console.log(response);
+        });
       }
 }

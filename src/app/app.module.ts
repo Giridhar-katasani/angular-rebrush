@@ -12,14 +12,17 @@ import { FilterComponent } from './filter/filter.component';
 import { TaskService } from './services/task.service';
 import { SearchComponent } from './search/search.component';
 import { BehaviouralSubjectService } from './services/behavioural.service';
-import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+
 // import { Routes } from '@angular/router';
 // import { MatIconModule } from '@angular/material';
 
-const routers: Routes = [
-  {path:'', component: TaskListComponent},
-  {path:'task-form', component: TaskFormComponent}
-];
+
 
 @NgModule({
   declarations: [
@@ -30,12 +33,16 @@ const routers: Routes = [
     HeaderComponent,
     FilterComponent,
     SearchComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routers),
+    MatButtonModule,
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [TaskService, BehaviouralSubjectService],
   bootstrap: [AppComponent]
