@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationService } from './services/authentication.service';
-import { AuthInterceptorInterceptor } from './services/AuthInterceptorInterceptor';
+import { AuthInterceptorInterceptor } from './interceptor/AuthInterceptorInterceptor';
 
 // import { Routes } from '@angular/router';
 // import { MatIconModule } from '@angular/material';
