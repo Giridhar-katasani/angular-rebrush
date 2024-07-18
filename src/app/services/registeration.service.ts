@@ -1,50 +1,64 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthenticationService) { }
 
   // register user
     registerUser(user: User) {
       console.log('register');
       // http://localhost:9090/auth/register
-      return this.http.post('http://localhost:9090/auth/register', user).subscribe((res:any) => { 
+      return this.http.post('http://localhost:9090/auth/register', user).subscribe( {
+        next: (res:any) => { 
         if (res?.token) {
-          localStorage.setItem('jwtToken', res?.token);
-        } else {
-          console.error('Token not found in response');
+          this.authService.setToken(res.token);
+          if(localStorage.getItem('jwtToken')) {
+            this.router.navigate(['/task-form']);
+          }
+        } 
+      }, 
+        error: (err) => {
+          console.log(err.message);
         }
-      })
+    })
     }
 
     // login user
-    loginUser(username: string, password: string) {
+    async loginUser(username: string, password: string) {
       return this.http.post('http://localhost:9090/auth/login', {
         username: username,
         password: password
-      }).subscribe((res:any) => {
+      }).subscribe({
+        next: (res:any) => {
         console.log(res);
-        localStorage.setItem('jwtToken', res?.token);
-      });
+        this.authService.setToken(res.token);
+        if(localStorage.getItem('jwtToken')) {
+          this.router.navigate(['/task-list']);
+        }
+      }, 
+        error: (err) => {
+        console.log(err.message);
+      }
+    });
     }
 
     // logout user
     logoutUser() {
-      return this.http.get('http://localhost:8080/logout');
+      this.authService.logout();
+      // return this.http.get('http://localhost:8080/logout');
     }
 
     // get user details
     getUserDetails() {
       return this.http.get('http://localhost:8080/user');
     }
-
-    // update user details
-  // login user
 }
 
 
@@ -56,5 +70,5 @@ interface User {
 }
 
 interface Token {
-response: string;
+  response: string;
 }

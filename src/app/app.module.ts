@@ -12,12 +12,14 @@ import { FilterComponent } from './filter/filter.component';
 import { TaskService } from './services/task.service';
 import { SearchComponent } from './search/search.component';
 import { BehaviouralSubjectService } from './services/behavioural.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthInterceptorInterceptor } from './services/AuthInterceptorInterceptor';
 
 // import { Routes } from '@angular/router';
 // import { MatIconModule } from '@angular/material';
@@ -44,7 +46,9 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [TaskService, BehaviouralSubjectService],
+  providers: [TaskService, BehaviouralSubjectService, AuthenticationService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

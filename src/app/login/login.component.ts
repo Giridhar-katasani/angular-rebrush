@@ -24,25 +24,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  async login() {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
       // console.log(formData);
       let username = formData.username || '';
       let password = formData.password  || '';
       if(username != "" && password != '') {
-        this.regService.loginUser(username, password);
-      }
-      if(localStorage.getItem('jwtToken')) {
-        this.navitageToTaskList();
+        await this.regService.loginUser(username, password);
       }
       // Perform further actions with formData
       
     }
-  }
-
-  navitageToTaskList() {
-    this.router.navigate(['/task-list']);
   }
 
   navigateToRegister() {

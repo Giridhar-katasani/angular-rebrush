@@ -155,11 +155,11 @@ export class TaskService {
 
       public createTask(task: Task) {
         const token = localStorage.getItem('jwtToken'); // Retrieve the token
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        });
-        console.log(token);
-        return this.http.post(this.API_URL, task, { headers }).subscribe((response) => {
+        // const headers = new HttpHeaders({
+        //   'Authorization': `Bearer ${token}`
+        // });
+        // console.log(token);
+        return this.http.post(this.API_URL, task).subscribe((response) => {
           console.log(response);
         });
       }
