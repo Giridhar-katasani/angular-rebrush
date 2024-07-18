@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AuthInterceptorInterceptor } from './AuthInterceptorInterceptor';
 
 describe('AuthInterceptorInterceptor', () => {
